@@ -20,7 +20,7 @@ class Home extends StatelessWidget {
             fontWeight: FontWeight.bold
           ),
         ),
-        backgroundColor: Colors.orange,
+        backgroundColor: Colors.red,
         iconTheme: IconThemeData(color: Colors.black),
       ),
       body: Column(

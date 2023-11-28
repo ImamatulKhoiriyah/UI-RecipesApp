@@ -17,24 +17,15 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for android - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return android;
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for windows - '
@@ -52,6 +43,24 @@ class DefaultFirebaseOptions {
     }
   }
 
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyCqNJlGVLqUULW5Fb0fGGOIvGdvPt3v_zQ',
+    appId: '1:212889377357:web:06e5f108904de2b6c05a04',
+    messagingSenderId: '212889377357',
+    projectId: 'recipeapp-cff45',
+    authDomain: 'recipeapp-cff45.firebaseapp.com',
+    storageBucket: 'recipeapp-cff45.appspot.com',
+    measurementId: 'G-JWT9HFL3CL',
+  );
+
+  static const FirebaseOptions android = FirebaseOptions(
+    apiKey: 'AIzaSyDdO4jpL6lq1yGJc00AZhBCP_9SGi_Psgw',
+    appId: '1:212889377357:android:7e8e7ceb2d5e63d2c05a04',
+    messagingSenderId: '212889377357',
+    projectId: 'recipeapp-cff45',
+    storageBucket: 'recipeapp-cff45.appspot.com',
+  );
+
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyCPLegP5ZpPw_wFEfR1CyeNavWbcsbHzL8',
     appId: '1:212889377357:ios:a076cab8b80a39d9c05a04',
@@ -59,5 +68,14 @@ class DefaultFirebaseOptions {
     projectId: 'recipeapp-cff45',
     storageBucket: 'recipeapp-cff45.appspot.com',
     iosBundleId: 'com.example.recipeapp',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyCPLegP5ZpPw_wFEfR1CyeNavWbcsbHzL8',
+    appId: '1:212889377357:ios:ac182c73deda3412c05a04',
+    messagingSenderId: '212889377357',
+    projectId: 'recipeapp-cff45',
+    storageBucket: 'recipeapp-cff45.appspot.com',
+    iosBundleId: 'com.example.recipeapp.RunnerTests',
   );
 }

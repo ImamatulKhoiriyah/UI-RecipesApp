@@ -19,7 +19,16 @@ class SplashScreen extends StatelessWidget {
                 backgroundColor: Colors.orange,
                 radius: 150,
               ),
-              SizedBox(height: 220),
+              SizedBox(height: 20),
+              Text(
+                'Mavia Cooking!!!',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 130),
               Container(
                 height: 50,
                 width: 150,
@@ -31,8 +40,8 @@ class SplashScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(
-                          builder: (_) => LoginPage(onLoginSuccess: () {})),
+                      MaterialPageRoute(builder: (context) => const Login(),
+                      ),
                     );
                   },
                   child: Text(
@@ -48,5 +57,3 @@ class SplashScreen extends StatelessWidget {
     );
   }
 }
-
-

@@ -1,14 +1,21 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:recipeapp/Views/Home.dart';
-import 'package:recipeapp/Views/Favorite.dart';
 import 'package:recipeapp/Views/Account.dart';
-import 'package:recipeapp/Views/Login.dart';
+import 'package:recipeapp/Views/Register.dart';
 import 'package:recipeapp/Views/SplashScreen.dart';
 import 'package:recipeapp/Views/CategoryList.dart';
+import 'firebase_options.dart';
 
 
-void main() {
-  runApp(MyApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -37,11 +44,7 @@ class _MyWidgetState extends State<MyWidget> {
   Widget build(BuildContext context) {
     return isLoggedIn
         ? MainScreen()
-        : LoginPage(onLoginSuccess: () {
-            setState(() {
-              isLoggedIn = true;
-            });
-          });
+        : Register();
   }
 }
 
@@ -58,7 +61,7 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> _pages = [
     Home(),
     FoodGridPage(),
-    Favorite(),
+    // Favorite(),
     Account(),
   ];
 
@@ -82,13 +85,13 @@ class _MainScreenState extends State<MainScreen> {
             label: 'Home',
           ),
            BottomNavigationBarItem(
-            icon: Icon(Icons.category),
-            label: 'Category',
+            icon: Icon(Icons.fastfood),
+            label: 'Recipes',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.favorite_border),
-            label: 'Favorite',
-          ),
+          // BottomNavigationBarItem(
+          //   icon: Icon(Icons.favorite_border),
+          //   label: 'Favorite',
+          // ),
           BottomNavigationBarItem(
             icon: Icon(Icons.account_circle),
             label: 'Account',

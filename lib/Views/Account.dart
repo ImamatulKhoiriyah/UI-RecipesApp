@@ -9,8 +9,10 @@ class Account extends StatelessWidget {
         backgroundColor: Colors.orange,
         title: Text(
           'My Account',
-          style: TextStyle(fontWeight: FontWeight.bold),
+          style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
+                iconTheme: IconThemeData(color: Colors.white),
+
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

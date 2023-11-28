@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "212889377357",
+    "project_id": "recipeapp-cff45",
+    "storage_bucket": "recipeapp-cff45.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:212889377357:android:de930c7e629b92fbc05a04",
+        "android_client_info": {
+          "package_name": "com.api_recipeapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdO4jpL6lq1yGJc00AZhBCP_9SGi_Psgw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:212889377357:android:7e8e7ceb2d5e63d2c05a04",
+        "android_client_info": {
+          "package_name": "com.example.recipeapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdO4jpL6lq1yGJc00AZhBCP_9SGi_Psgw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

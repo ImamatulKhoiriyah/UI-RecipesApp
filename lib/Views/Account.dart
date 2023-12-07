@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/services.dart';
 import 'package:recipeapp/Views/SplashScreen.dart';
 import 'package:recipeapp/service.dart';
 
@@ -51,7 +50,7 @@ class _AccountState extends State<Account> {
                   SizedBox(height: 30,),
                   CircleAvatar(
                     radius: 50,
-                    backgroundImage: AssetImage("assets/images/profil2.png"),
+                    backgroundImage: AssetImage("assets/images/profil.png"),
                   ),
                   SizedBox(height: 16),
                   Text(

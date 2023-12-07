@@ -35,7 +35,7 @@ class _RegisterState extends State<Register> {
           backgroundColor: Colors.orange,
         ),
       );
-      Navigator.push(context, MaterialPageRoute(builder: (context) => MainScreen()));
+      Navigator.push(context, MaterialPageRoute(builder: (context) => Login()));
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(

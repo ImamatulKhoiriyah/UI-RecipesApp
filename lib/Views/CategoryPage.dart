@@ -4,7 +4,7 @@ import 'package:recipeapp/Models/recipe_api.dart';
 import 'package:recipeapp/Views/DetailPage.dart';
 
 class CategoryPage extends StatefulWidget {
-  final List<int> customDataIndices; // Ubah tipe data ke List<int>
+  final List<int> customDataIndices; 
 
   CategoryPage({
     required this.customDataIndices,

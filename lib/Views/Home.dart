@@ -94,7 +94,7 @@ class _HomeState extends State<Home> {
                             CircleAvatar(
                               radius: 30,
                               backgroundImage:
-                                  AssetImage("assets/images/profil2.png"),
+                                  AssetImage("assets/images/profil.png"),
                             ),
                           ],
                         ),
@@ -156,13 +156,13 @@ class _HomeState extends State<Home> {
                             break;
                           case 1:
                             currentIcon = Icons.fastfood;
-                            currentCategory = 'Appetizers';
-                            currentCategoryIndices = [1, 5, 12, 16];
+                            currentCategory = 'Pasta Dishes';
+                            currentCategoryIndices = [1, 3, 4, 6, 12];
                             break;
                           case 2:
                             currentIcon = Icons.local_dining;
                             currentCategory = 'Chicken Dishes';
-                            currentCategoryIndices = [0, 4, 9, 13];
+                            currentCategoryIndices = [0, 5, 8, 15];
                             break;
                           case 3:
                             currentIcon = Icons.local_florist;
@@ -181,8 +181,8 @@ class _HomeState extends State<Home> {
                             break;
                           case 6:
                             currentIcon = Icons.restaurant;
-                            currentCategory = 'Pasta Dishes';
-                            currentCategoryIndices = [1, 3, 5, 6, 12];
+                            currentCategory = 'Appetizers';
+                            currentCategoryIndices = [1, 5, 12, 16];
                             break;
                           default:
                             currentIcon = Icons.restaurant;
@@ -347,7 +347,7 @@ Widget ResepCard({required Resep resep, required BuildContext context}) {
                 Text(
                   resep.name,
                   style: TextStyle(
-                    fontSize: 10.0,
+                    fontSize: 9.0,
                     fontWeight: FontWeight.bold,
                   ),
                   maxLines: 2,

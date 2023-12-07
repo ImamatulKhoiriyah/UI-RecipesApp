@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-// import 'package:recipeapp/Models/Food.dart';
 import 'package:recipeapp/Models/recipe.dart';
 import 'package:recipeapp/Models/recipe_api.dart';
 import 'package:recipeapp/Views/DetailVideo.dart';
-import 'package:recipeapp/Views/Favorite.dart';
 
 class DetailPage extends StatefulWidget {
   final Resep recipe;
@@ -40,9 +38,10 @@ class _DetailPageState extends State<DetailPage> {
         title: Text(
           "Detail",
           style: TextStyle(
-              fontWeight: FontWeight.bold, color: Colors.white, fontSize: 20.0),
+              fontWeight: FontWeight.bold, color: Colors.white),
         ),
         iconTheme: IconThemeData(color: Colors.white),
+        centerTitle: true,
       ),
       body: _isLoading
           ? Center(child: CircularProgressIndicator())

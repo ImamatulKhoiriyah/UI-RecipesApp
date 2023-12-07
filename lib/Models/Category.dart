@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:recipeapp/Views/CategoryList.dart'; 
+import 'package:recipeapp/Views/CategoryPage.dart';
 
 class Category extends StatelessWidget {
   final IconData iconName;
   final String categoryName;
   final Color iconColor;
+  final List<int> categoryIndices; 
 
   Category({
     required this.iconName,
     required this.categoryName,
     required this.iconColor,
+    required this.categoryIndices,
   });
 
   @override
@@ -18,7 +20,9 @@ class Category extends StatelessWidget {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => FoodGridPage()),
+          MaterialPageRoute(
+            builder: (context) => CategoryPage(customDataIndices: categoryIndices),
+          ),
         );
       },
       child: Container(
@@ -26,7 +30,7 @@ class Category extends StatelessWidget {
         child: Column(
           children: [
             CircleAvatar(
-              radius: 35.0,
+              radius: 30.0,
               backgroundColor: Colors.orange,
               child: Icon(
                 iconName,

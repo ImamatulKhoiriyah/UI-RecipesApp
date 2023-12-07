@@ -38,9 +38,10 @@ class _DetailVideoState extends State<DetailVideo> {
         title: Text(
           "Video",
           style: TextStyle(
-              fontWeight: FontWeight.bold, color: Colors.white, fontSize: 20.0),
+              fontWeight: FontWeight.bold, color: Colors.white),
         ),
         iconTheme: IconThemeData(color: Colors.white),
+        centerTitle: true,
       ),
       body: 
           Center(

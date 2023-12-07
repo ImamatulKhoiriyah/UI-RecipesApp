@@ -11,7 +11,7 @@ class ResepApi {
     });
 
     final response = await http.get(uri, headers: {
-      "X-RapidAPI-Key": "16a5573e62msh2d6189855522db3p1b31b8jsn614477b871b0",
+      "X-RapidAPI-Key": "aa34635a8bmshe52a37a11475648p11646djsn2117848df13e",
       "X-RapidAPI-Host": "tasty.p.rapidapi.com"
     });
 

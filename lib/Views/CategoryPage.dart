@@ -3,41 +3,20 @@ import 'package:recipeapp/Models/recipe.dart';
 import 'package:recipeapp/Models/recipe_api.dart';
 import 'package:recipeapp/Views/DetailPage.dart';
 
-class FoodGridPage extends StatefulWidget {
+class CategoryPage extends StatefulWidget {
+  final List<int> customDataIndices; // Ubah tipe data ke List<int>
+
+  CategoryPage({
+    required this.customDataIndices,
+  });
+
   @override
-  State<FoodGridPage> createState() => _FoodGridPageState();
+  State<CategoryPage> createState() => _CategoryPageState();
 }
 
-class _FoodGridPageState extends State<FoodGridPage> {
-  late List<Resep> _resep;
+class _CategoryPageState extends State<CategoryPage> {
+  late List<Resep> _categoryData;
   bool _isLoading = true;
-  String searchText = '';
-
-  @override
-  void initState() {
-    super.initState();
-    _resep = [];
-    getResep();
-  }
-
-  Future<void> getResep() async {
-    try {
-      List<Resep> resepList = await ResepApi.getResep();
-      setState(() {
-        _isLoading = false;
-        _resep = resepList;
-      });
-    } catch (error) {
-      print("Error fetching data: $error");
-    }
-  }
-
-  List<Resep> get _filteredResep {
-    return _resep
-        .where((resep) =>
-            resep.name.toLowerCase().contains(searchText.toLowerCase()))
-        .toList();
-  }
 
   void _navigateToDetail(Resep resep) {
     Navigator.push(
@@ -49,63 +28,54 @@ class _FoodGridPageState extends State<FoodGridPage> {
   }
 
   @override
+  void initState() {
+    super.initState();
+    _categoryData = [];
+    getCategoryData(widget.customDataIndices);
+  }
+
+  Future<void> getCategoryData(List<int> customDataIndices) async {
+    _categoryData = await ResepApi.getResep();
+
+    _categoryData = _categoryData
+        .where((recipe) =>
+            customDataIndices.contains(_categoryData.indexOf(recipe)))
+        .toList();
+
+    setState(() {
+      _isLoading = false;
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.orange,
         title: Text(
-          'All Recipes',
+          'Category Recipes',
           style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
         ),
-        iconTheme: IconThemeData(color: Colors.orange),
-        automaticallyImplyLeading: false,
+        iconTheme: IconThemeData(color: Colors.white),
         centerTitle: true,
       ),
       body: _isLoading
           ? Center(child: CircularProgressIndicator())
-          : Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(
-                    vertical: 15.0,
-                    horizontal: 8.0,
-                  ),
-                  child: TextField(
-                    onChanged: (value) {
-                      setState(() {
-                        searchText = value;
-                      });
-                    },
-                    decoration: InputDecoration(
-                      hintText: 'Search...',
-                      contentPadding: EdgeInsets.symmetric(horizontal: 20.0),
-                      prefixIcon: Icon(Icons.search),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: GridView.builder(
-                    shrinkWrap: true,
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      crossAxisSpacing: 8.0,
-                      mainAxisSpacing: 8.0,
-                    ),
-                    itemCount: _filteredResep.length,
-                    itemBuilder: (context, index) {
-                      return GestureDetector(
-                        onTap: () {
-                          _navigateToDetail(_filteredResep[index]);
-                        },
-                        child: ResepCard(_filteredResep[index]),
-                      );
-                    },
-                  ),
-                ),
-              ],
+          : GridView.builder(
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 8.0,
+                mainAxisSpacing: 8.0,
+              ),
+              itemCount: _categoryData.length,
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                  onTap: () {
+                    _navigateToDetail(_categoryData[index]);
+                  },
+                  child: ResepCard(_categoryData[index]),
+                );
+              },
             ),
     );
   }
